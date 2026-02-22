@@ -19,12 +19,7 @@ class Restaurant(db.Model, SerializerMixin):
     """
     Restaurant model representing a pizza restaurant.
     
-    Attributes:
-        id (int): Primary key, unique identifier
-        name (str): Restaurant name
-        address (str): Restaurant address
-        restaurant_pizzas (list): Association with pizzas offered by this restaurant
-    """
+''''
     
     __tablename__ = "restaurants"
 
