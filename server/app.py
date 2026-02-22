@@ -34,7 +34,7 @@ class Restaurants(Resource):
         return [restaurant.to_dict(rules=('-restaurant_pizzas',)) for restaurant in Restaurant.query.all()], 200
 
 
-class RestaurantById(Resource):
+class RestaurantById:
     def get(self, id):
         restaurant = Restaurant.query.filter(Restaurant.id == id).one_or_none()
         if restaurant is None:
