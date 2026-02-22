@@ -36,15 +36,7 @@ class Restaurant(db.Model, SerializerMixin):
 
 
 class Pizza(db.Model, SerializerMixin):
-    """
-    Pizza model representing a pizza menu item.
     
-    Attributes:
-        id (int): Primary key, unique identifier
-        name (str): Pizza name
-        ingredients (str): Comma-separated list of ingredients
-        restaurant_pizzas (list): Association with restaurants offering this pizza
-    """
     
     __tablename__ = "pizzas"
 
