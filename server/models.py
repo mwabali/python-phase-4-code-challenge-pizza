@@ -64,7 +64,7 @@ class RestaurantPizza(db.Model, SerializerMixin):
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'), nullable=False)
 
     # add relationships
-    # relationships are defined in Pizza and Restaurant
+    
 
     
     serialize_rules = ('-pizza.restaurant_pizzas', '-restaurant.restaurant_pizzas')
