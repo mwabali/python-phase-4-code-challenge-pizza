@@ -47,7 +47,7 @@ class Pizza(db.Model, SerializerMixin):
     # Relationship to RestaurantPizza association objects
     restaurant_pizzas = db.relationship('RestaurantPizza', backref='pizza', cascade='all, delete-orphan')
 
-    # Serialization rules to exclude circular references
+    
     serialize_rules = ('-restaurant_pizzas.pizza',)
 
     def __repr__(self) -> str:
