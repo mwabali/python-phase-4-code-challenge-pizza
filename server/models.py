@@ -69,7 +69,7 @@ class RestaurantPizza(db.Model, SerializerMixin):
     
     serialize_rules = ('-pizza.restaurant_pizzas', '-restaurant.restaurant_pizzas')
 
-    # add validation
+    
     @validates('price')
     def validate_price(self, key, value):
         if not (1 <= value <= 30):
