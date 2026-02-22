@@ -17,6 +17,10 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
+# Create all tables
+with app.app_context():
+    db.create_all()
+
 api = Api(app)
 
 
@@ -77,6 +81,4 @@ api.add_resource(RestaurantPizzas, '/restaurant_pizzas')
 
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(port=5555, debug=True)
