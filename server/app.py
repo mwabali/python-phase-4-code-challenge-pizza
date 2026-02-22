@@ -46,7 +46,7 @@ class RestaurantById(Resource):
         if restaurant is None:
             return {"error": "Restaurant not found"}, 404
         db.session.delete(restaurant)
-        db.session.commit
+        db.session.commit()
         return "", 204
 
 
