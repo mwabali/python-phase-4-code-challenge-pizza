@@ -4,8 +4,7 @@ Database models for the Pizza Challenge application.
 This module defines the core data models:
 - Restaurant: Pizza restaurant information
 - Pizza: Pizza menu items
-- RestaurantPizza: Association between restaurants and pizzas with pricing
-"""
+- RestaurantPizza: Association between restaurants and pizzas with 
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
