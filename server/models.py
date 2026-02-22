@@ -44,7 +44,7 @@ class Pizza(db.Model, SerializerMixin):
     name: str = db.Column(db.String)
     ingredients: str = db.Column(db.String)
 
-    # Relationship to RestaurantPizza association objects
+    
     restaurant_pizzas = db.relationship('RestaurantPizza', backref='pizza', cascade='all, delete-orphan')
 
     
