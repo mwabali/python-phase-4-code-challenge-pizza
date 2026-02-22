@@ -1,8 +1,18 @@
+"""
+Database models for the Pizza Challenge application.
+
+This module defines the core data models:
+- Restaurant: Pizza restaurant information
+- Pizza: Pizza menu items
+- RestaurantPizza: Association between restaurants and pizzas with pricing
+"""
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
+from typing import Any
 
 metadata = MetaData(
     naming_convention={
@@ -14,36 +24,58 @@ db = SQLAlchemy(metadata=metadata)
 
 
 class Restaurant(db.Model, SerializerMixin):
+    """
+    Restaurant model representing a pizza restaurant.
+    
+    Attributes:
+        id (int): Primary key, unique identifier
+        name (str): Restaurant name
+        address (str): Restaurant address
+        restaurant_pizzas (list): Association with pizzas offered by this restaurant
+    """
+    
     __tablename__ = "restaurants"
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    address = db.Column(db.String)
+    id: int = db.Column(db.Integer, primary_key=True)
+    name: str = db.Column(db.String)
+    address: str = db.Column(db.String)
 
-    # add relationship
+    # Relationship to RestaurantPizza association objects
     restaurant_pizzas = db.relationship('RestaurantPizza', backref='restaurant', cascade='all, delete-orphan')
 
-    # add serialization rules
+    # Serialization rules to exclude circular references
     serialize_rules = ('-restaurant_pizzas.restaurant',)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """Return string representation of Restaurant."""
         return f"<Restaurant {self.name}>"
 
 
 class Pizza(db.Model, SerializerMixin):
+    """
+    Pizza model representing a pizza menu item.
+    
+    Attributes:
+        id (int): Primary key, unique identifier
+        name (str): Pizza name
+        ingredients (str): Comma-separated list of ingredients
+        restaurant_pizzas (list): Association with restaurants offering this pizza
+    """
+    
     __tablename__ = "pizzas"
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    ingredients = db.Column(db.String)
+    id: int = db.Column(db.Integer, primary_key=True)
+    name: str = db.Column(db.String)
+    ingredients: str = db.Column(db.String)
 
-    # add relationship
+    # Relationship to RestaurantPizza association objects
     restaurant_pizzas = db.relationship('RestaurantPizza', backref='pizza', cascade='all, delete-orphan')
 
-    # add serialization rules
+    # Serialization rules to exclude circular references
     serialize_rules = ('-restaurant_pizzas.pizza',)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """Return string representation of Pizza."""
         return f"<Pizza {self.name}, {self.ingredients}>"
 
 
