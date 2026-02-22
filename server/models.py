@@ -16,10 +16,7 @@ db = SQLAlchemy(metadata=metadata)
 
 
 class Restaurant(db.Model, SerializerMixin):
-    """
-    Restaurant model representing a pizza restaurant.
     
-''''
     
     __tablename__ = "restaurants"
 
