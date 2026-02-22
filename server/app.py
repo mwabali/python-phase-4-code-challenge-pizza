@@ -57,7 +57,7 @@ class Pizzas(Resource):
 
 class RestaurantPizzas(Resource):
     def post(self):
-        data = request.get_json
+        data = request.get_json()
         try:
             restaurant_pizza = RestaurantPizza(
                 price=data.get('price'),
