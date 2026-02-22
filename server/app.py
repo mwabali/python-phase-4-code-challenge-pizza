@@ -15,7 +15,7 @@ app.json.compact = False
 
 migrate = Migrate(app, db)
 
-db.init_app
+db.init_app(app)
 
 # Create all tables
 with app.app_context():
