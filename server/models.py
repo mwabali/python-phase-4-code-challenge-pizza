@@ -63,7 +63,6 @@ class RestaurantPizza(db.Model, SerializerMixin):
     pizza_id = db.Column(db.Integer, db.ForeignKey('pizzas.id'), nullable=False)
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'), nullable=False)
 
-    # add relationships
     
 
     
