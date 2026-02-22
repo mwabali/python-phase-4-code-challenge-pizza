@@ -66,7 +66,7 @@ class RestaurantPizza(db.Model, SerializerMixin):
     # add relationships
     # relationships are defined in Pizza and Restaurant
 
-    # add serialization rules
+    
     serialize_rules = ('-pizza.restaurant_pizzas', '-restaurant.restaurant_pizzas')
 
     # add validation
